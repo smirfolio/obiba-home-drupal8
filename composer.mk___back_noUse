@@ -1,0 +1,20 @@
+#
+# Composer installation
+#
+#
+
+DRUPAL_FOLDER=drupal8
+WEB_DRUPAL_FOLDER=drupal8/web
+CUSTOM_MODULE_DRUPAL_FOLDER=drupal8/web/custom
+
+composer-build: create-drupal-folder copy-composer-file composer-install
+
+create-drupal-folder:
+	mkdir $(DRUPAL_FOLDER)
+
+copy-composer-file:
+	cp composer.json $(DRUPAL_FOLDER)
+
+composer-install:
+	cd $(DRUPAL_FOLDER) && \
+	composer install
